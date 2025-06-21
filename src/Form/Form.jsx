@@ -64,9 +64,9 @@ const FeedbackForm = () => {
         >
           <option value="">Select Staff</option>
           <option value="Mr. Abishek">Mr. Abishek</option>
-          <option value="Ms. Nehru Nandha">Ms. Nehru Nandha</option>
+          <option value="Mr. Nehru Nandha">Mr. Nehru Nandha</option>
           <option value="Mr. Lokesh">Mr. Lokesh</option>
-          <option value="Ms. Subhash">Ms. Subhash</option>
+          <option value="Mr. Subhash">Mr. Subhash</option>
         </select>
 
         <label>Feedback:</label>
