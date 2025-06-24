@@ -32,10 +32,11 @@ app.post('/api/feedback', async (req, res) => {
   }
 });
 
-// Serve frontend build
 
+// Serve static files
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 
+// Wildcard route - must come last
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });

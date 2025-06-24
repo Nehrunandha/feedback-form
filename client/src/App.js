@@ -1,11 +1,15 @@
-import React from 'react';
-import FeedbackForm from './Form/Form.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Form/Form.jsx';
+
 
 function App() {
   return (
-    <div>
-      <FeedbackForm />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        
+      </Routes>
+    </Router>
   );
 }
 
