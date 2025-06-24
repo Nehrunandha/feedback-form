@@ -21,9 +21,24 @@ const FeedbackForm = () => {
 
       {/* 👇 Use actual FormSubmit endpoint here */}
       <form
-        action="https://formsubmit.co/nehrunandha30@gmail.com"
-        method="POST"
-        style={styles.form}
+        onSubmit={(e) => {
+    e.preventDefault();
+    fetch('http://localhost:5000/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert('Feedback submitted!',data);
+        setFormData({ name: '', batch: '', staff: '', feedback: '' });
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Something went wrong!');
+      });
+  }}
+  style={styles.form}
       >
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
