@@ -4,7 +4,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const Feedback = require('./models/Feedback');
 
-dotenv.config();
+require('dotenv-safe').config();
+
 
 const app = express();
 
