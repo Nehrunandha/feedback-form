@@ -15,35 +15,30 @@ const FeedbackForm = () => {
     }));
   };
 
-  return (
-    <div style={styles.container}>
-      <h2 style={styles.header}>Internship Feedback Form</h2>
-
-      {/* 👇 Use actual FormSubmit endpoint here */}
-      <form
-        onSubmit={(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/api/feedback', {
+
+    fetch('/api/feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
       .then((data) => {
-        alert('Feedback submitted!',data);
+        alert('✅ Feedback submitted successfully!');
         setFormData({ name: '', batch: '', staff: '', feedback: '' });
       })
       .catch((err) => {
-        console.error(err);
-        alert('Something went wrong!');
+        console.error('❌ Submission error:', err);
+        alert('❌ Something went wrong. Please try again later.');
       });
-  }}
-  style={styles.form}
-      >
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_subject" value="New Feedback Submission" />
+  };
 
+  return (
+    <div style={styles.container}>
+      <h2 style={styles.header}>Internship Feedback Form</h2>
+
+      <form onSubmit={handleSubmit} style={styles.form}>
         <label>Name:</label>
         <input
           type="text"
